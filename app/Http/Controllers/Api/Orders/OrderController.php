@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Braintree\Gateway;
 use Illuminate\Http\Request;
 use App\Http\Requests\Orders\OrderRequest;
+use App\Models\Promotion;
 
 class OrderController extends Controller
 {
@@ -22,8 +23,10 @@ class OrderController extends Controller
 
     public function makePayment(OrderRequest $request, Gateway $gateway){
 
+        $promotion=Promotion::find($request->promotion);
+
         $result=$gateway->transaction()->sale([
-            'amount'=>'10.00',
+            'amount'=>$promotion->price,
             'paymentMethodNonce'=>$request->token,
             'options'=>[
                 'submitForSettlement'=>true

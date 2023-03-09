@@ -23,7 +23,7 @@ class OrderRequest extends FormRequest
     {
         return [
             'token'=>'required',
-            'amount'=>'required'
+            'promotion'=>'required'
         ];
     }
 }
