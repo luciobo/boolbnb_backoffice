@@ -10,6 +10,9 @@
                 </div>
                 <div class="d-flex gap-2">
                     <a class="btn btn-info" href="{{ route('user.apartments.edit', $apartment) }}">Edit</a>
+
+                    @include('user.apartments.partials.buy-promotion-form')
+        
                     <form action="{{ route('user.apartments.destroy', $apartment->id) }}" method="POST"
                         class="delete_apartment">
                         @csrf
