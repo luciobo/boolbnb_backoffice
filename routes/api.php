@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\MessageController;
 use App\Http\Controllers\Api\VisualController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\Orders\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +26,6 @@ Route::get('/apartments', [ApartmentController::class, 'index']);
 Route::get('/apartments/{apartment}', [ApartmentController::class, 'show']);
 Route::post('/messages', [MessageController::class, 'store']);
 Route::post('/visuals', [VisualController::class, 'store']);
+
+Route::get('orders/generate', [OrderController::class, 'generate']);
+Route::post('orders/make/payment', [OrderController::class, 'makePayment']);
