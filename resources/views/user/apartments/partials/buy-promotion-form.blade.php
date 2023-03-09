@@ -13,45 +13,30 @@
                 <h2 class="text-lg font-medium text-gray-900">
                     {{ __('Con quale offerta vuoi promuovere il tuo appartamento?') }}
                 </h2>
-                <p class="mt-1 text-sm text-gray-600">
+                <div class="row">
                 @foreach ($promotions as $promotion)
-                    <ul>
-                        <li><h6>{{$promotion->type}}</h6></li>
-                        <li>{{$promotion->price}}</li>
-                        <li>{{$promotion->duration}}</li>
-                    </ul>
+                <div class="col col-sm-6 col-md-4">
+                    <div class="col-content">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $promotion->type }}</h5>
+                                <p class="card-text">
+                                    {{ $promotion->price }}$
+                                    <br>
+                                    {{ $promotion->duration}} h
+                                </p>
+                                <a class="btn btn-primary">Acquista</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 @endforeach
-                </p>
+                </div>
+
                 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-
-                <form method="post" action="{{ route('profile.destroy') }}" class="p-6">
-                    @csrf
-                    @method('delete')
-
-
-                    <div class="input-group">
-
-                        <input id="password" name="password" type="password" class="form-control"
-                            placeholder="{{ __('Password') }}" />
-
-                        @error('password')
-                            <span class="invalid-feedback mt-2" role="alert">
-                                <strong>{{ $errors->userDeletion->get('password') }}</strong>
-                            </span>
-                        @enderror
-
-
-
-                        <button type="submit" class="btn btn-danger">
-                            {{ __('Cancella Account') }}
-                        </button>
-                        <!--  -->
-                    </div>
-                </form>
-
+           
             </div>
         </div>
     </div>
