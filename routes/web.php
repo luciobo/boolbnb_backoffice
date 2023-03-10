@@ -47,7 +47,10 @@ Route::middleware(['auth', 'verified'])
             ->prefix('promotions')
             ->group(function () {
                 Route::get('/index', [PromotionController::class, 'index'])->name('index');
+                Route::get('{promotion}/apartments/{apartment}', [PromotionController::class, 'show'])->name('checkout');
             });
+  
+            
     });
 
 require __DIR__ . '/auth.php';
